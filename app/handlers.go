@@ -5,6 +5,8 @@ import (
 	"encoding/xml"
 	"fmt"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 // Data layer
@@ -32,4 +34,16 @@ func getAllCustomers(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(customers)
 	}
+}
+func getCustomer(w http.ResponseWriter, r *http.Request) {
+	Vars := mux.Vars(r)
+	fmt.Println(Vars)                  // console writing
+	fmt.Fprint(w, Vars["customer_id"]) // writing response again back to client
+}
+func createCustomer(w http.ResponseWriter, r *http.Request) {
+	// fmt.Println(r.Body)
+	fmt.Println("create customer called")
+	fmt.Println(r)
+	fmt.Fprint(w, "user created")
+	// fmt.Fprint(w, r.Body)
 }
