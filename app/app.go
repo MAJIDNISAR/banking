@@ -3,6 +3,8 @@ package app
 import (
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 func Start() {
@@ -12,7 +14,8 @@ func Start() {
 	// 	fmt.Fprint(rw, "Hello World")
 	// })
 	// we can define our own request multiplexer or router
-	router := http.NewServeMux()
+	// router := http.NewServeMux()
+	router := mux.NewRouter()
 
 	// defining the routes using router and not http
 	// http.HandleFunc("/greet", greet) it was done previously like this
